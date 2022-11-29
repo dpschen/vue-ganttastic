@@ -25,20 +25,25 @@
 
   <button type="button" @click="addBar()">Add bar</button>
   <button type="button" @click="deleteBar()">Delete bar</button>
+  <label>
+    dateFormat
+    <input v-model="format" type="text" />
+  </label>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue"
 import type { GanttBarObject } from "./types.js"
 
-const chartStart = ref("21.03.2021 12:00")
-const chartEnd = ref("15.07.2021 12:00")
-const format = ref("DD.MM.YYYY HH:mm")
+const chartStart = ref(new Date("2021-03-21T12:00"))
+const chartEnd = ref(new Date("2021-07-15T12:00"))
+// const format = ref("DD.MM.YYYY HH:mm")
+const format = ref(false)
 
 const bars1 = ref<GanttBarObject[]>([
   {
-    beginDate: "24.04.2021 13:00",
-    endDate: "25.05.2021 19:00",
+    beginDate: new Date("2021-04-24T13:00"),
+    endDate: new Date("2021-05-25T19:00"),
     ganttBarConfig: {
       id: "8621987329",
       label: "I'm in a bundle",
@@ -49,8 +54,8 @@ const bars1 = ref<GanttBarObject[]>([
 
 const bars2 = ref([
   {
-    beginDate: "24.04.2021 13:00",
-    endDate: "25.05.2021 19:00",
+    beginDate: new Date("2021-04-24T13:00"),
+    endDate: new Date("2021-05-25T19:00"),
     ganttBarConfig: {
       id: "1592311887",
       label: "I'm in a bundle",
@@ -61,8 +66,8 @@ const bars2 = ref([
     }
   },
   {
-    beginDate: "01.01.2021 00:00",
-    endDate: "01.03.2021 00:00",
+    beginDate: new Date("2021-01-01T00:00"),
+    endDate: new Date("2021-03-01T00:00"),
     ganttBarConfig: {
       id: "7716981641",
       label: "Lorem ipsum dolor",
@@ -73,8 +78,8 @@ const bars2 = ref([
     }
   },
   {
-    beginDate: "15.06.2021 00:00",
-    endDate: "10.07.2021 00:00",
+    beginDate: new Date("2021-06-15T00:00"),
+    endDate: new Date("2021-07-10T00:00"),
     ganttBarConfig: {
       id: "9716981641",
       label: "Oh hey",
@@ -92,8 +97,8 @@ const addBar = () => {
     return
   }
   const bar = {
-    beginDate: "26.02.2021 00:00",
-    endDate: "26.03.2021 02:00",
+    beginDate: new Date("2021-02-26T00:00"),
+    endDate: new Date("2021-03-26T02:00"),
     ganttBarConfig: {
       id: "test1",
       hasHandles: true,
